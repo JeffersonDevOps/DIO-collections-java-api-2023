@@ -33,13 +33,11 @@ public class CarrinhoDeCompras {
         double valorTotal = 0;
         if (!itemList.isEmpty()) {
             for (Item itens : itemList){
-                double precoItens = itens.getPreco() * itens.getQuantidade();
-                valorTotal += precoItens;
+                valorTotal += itens.getPreco() * itens.getQuantidade();
             }
             return valorTotal;
         } else {
-//            throw new RuntimeException("Não há itens no Carrinho!");
-            return valorTotal;
+            throw new RuntimeException("Não há itens no Carrinho!");
         }
     }
 
@@ -62,11 +60,14 @@ public class CarrinhoDeCompras {
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
 
         carrinhoDeCompras.adicionarItem("Biscoito", 1.50, 3);
-//        carrinhoDeCompras.adicionarItem("Massa de Tomate", 5.50, 2);
+        carrinhoDeCompras.adicionarItem("Maca", 2.50, 2);
+        carrinhoDeCompras.adicionarItem("Massa de Tomate", 5.50, 2);
 //        carrinhoDeCompras.adicionarItem("Biscoito", 1.50, 3);
 //        carrinhoDeCompras.adicionarItem("Biscoito", 1.50, 3);
         carrinhoDeCompras.exibirItens();
-        carrinhoDeCompras.calcularValorTotal();
+        carrinhoDeCompras.removerItem("maca");
+        carrinhoDeCompras.exibirItens();
+        System.out.println("O valor total do carrinho é: " + carrinhoDeCompras.calcularValorTotal());
 
     }
 }
